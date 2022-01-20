@@ -9,6 +9,7 @@ general {
 }
 
 order += "volume master"
+order += "wireless wlp1s0"
 order += "ethernet enp2s0"
 order += "battery 0"
 order += "memory"
@@ -19,7 +20,7 @@ load {
 }
 
 cpu_temperature 0 {
-        format = "<span background='#bf616a'>  %degrees °C </span>"
+        format = "<span background='#2d3440'>  %degrees °C </span>"
         path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
@@ -36,9 +37,9 @@ ethernet enp2s0 {
         format_down = "<span background='#2e3440'>  </span>"
 }
 
-wireless wlp2s0 {
-        format_up = "<span background='#b48ead'>  %essid </span>"
-        format_down = "<span background='#b48ead'>  Disconnected </span>"
+wireless wlp1s0 {
+        format_up = "<span background='#2e3440'>直 %essid </span>"
+        format_down = "<span background='#2e3440'> 睊 Disconnected </span>"
 }
 
 volume master {
@@ -63,7 +64,7 @@ battery 0 {
 
 tztime local {
 		format = "<span background='#2e3440'> %time </span>"
-		format_time = " %a %-d %b %H:%M"
+		format_time = " %a %-d %b  %H:%M"
 }
 
 memory {
