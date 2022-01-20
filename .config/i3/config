@@ -40,12 +40,12 @@ exec --no-startup-id conky -c .conkyrc
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
+# Use amixer to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 10+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 10- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id amixer -q set Master toggle && $refresh_i3status
 
 # Printscreen utility
 bindsym Shift+Print exec --no-startup-id flameshot full --path Pictures/Screenshots/
@@ -130,8 +130,8 @@ set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6:"
-set $ws7 "7"
-set $ws8 "8"
+set $ws7 "7:misc"
+set $ws8 "8:desktop"
 set $ws9 "9:misc"
 set $ws10 "10:"
 
@@ -180,6 +180,16 @@ assign [class="Conky"] $ws8
 assign [class="URxvt"] $ws5
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 
+#client colors
+# class                 border  backgr. text    indicator child_border
+client.unfocused        #2e3440 #2e3440 #d8dee9 #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.focused          #d8dee9 #d8dee9 #2e3440 #ff00ff   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -221,8 +231,8 @@ bar {
 		strip_workspace_numbers no 
         colors {
         background #2e3440
-        statusline #2e3440
-        separator #4b5262
+        statusline #eceff4
+        separator #eceff4
 
         # colour of border, background, and text
         focused_workspace       #2e3440 #d8dee9 #2e3440
@@ -230,7 +240,7 @@ bar {
         inactive_workspace      #2e3440 #2e3440 #d8dee8
         urgent_workspace       #2e3440 #d08770 #2e3440
     }
-	status_command i3status | i3status-title-on-bar --color '#eceff4'
+	status_command i3status | i3status-title-on-bar --fixed-width 40 --color '#eceff4'
 }
 
 #gaps
