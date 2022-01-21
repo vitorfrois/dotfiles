@@ -37,7 +37,8 @@ exec --no-startup-id telegram-desktop
 exec --no-startup-id spotify
 exec --no-startup-id notion-app-enchanced 
 #exec --no-startup-id conky -c .conkyrc
-exec i3-layouts
+#exec i3-layouts
+exec --no-startup-id thunderbird
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -127,7 +128,7 @@ exec --no-startup-id feh --bg-fill /usr/share/backgrounds/wallpapers-juhraya/Aus
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
+set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
@@ -175,20 +176,16 @@ workspace $ws9 output HDMI-1
 workspace $ws10 output eDP-1
 
 #Layouts for each workspace
-set $i3l autosplit to workspace $ws2
-set $i3l autosplit to workspace $ws3
-set $i3l autosplit to workspace $ws4
-set $i3l autosplit to workspace $ws5
-set $i3l autosplit to workspace $ws6
+#set $i3l autosplit to workspace $ws2
 
 #force windows to certain workspaces
+assign [class="Thunderbird"] $ws1
 assign [class="firefox"] $ws2
 assign [class="code-oss"] $ws3
 assign [class="discord"] $ws4 
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws10
 assign [class="Conky"] $ws8
-assign [class="URxvt"] $ws5
 assign [class="notion-app-enhanced"] $ws8
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 
