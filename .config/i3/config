@@ -33,13 +33,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # Monitor xrandr config
 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1366x768 --pos 0x312 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1366x0 --rotate normal
 
-exec --no-startup-id telegram-desktop
-exec --no-startup-id spotify
-exec --no-startup-id notion-app-enchanced 
-#exec --no-startup-id conky -c .conkyrc
-#exec i3-layouts
-exec --no-startup-id thunderbird
-
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -124,7 +117,13 @@ bindsym $mod+a focus parent
 
 #Automatically starting apps
 exec_always --no-startup-id picom
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/wallpapers-juhraya/Austria_by_Rutger_Heijmerikx.jpg
+exec --no-startup-id feh --bg-fill wallpaper.jpg
+exec --no-startup-id telegram-desktop
+exec --no-startup-id spotifyd --no-daemon -c .config/spotifyd/spotify.conf
+#exec --no-startup-id notion-app 
+exec --no-startup-id thunderbird
+#exec --no-startup-id conky -c .conkyrc
+#exec i3-layouts                       
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -186,8 +185,11 @@ assign [class="discord"] $ws4
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws10
 assign [class="Conky"] $ws8
-assign [class="notion-app-enhanced"] $ws8
+assign [class="notion-app"] $ws8
+assign [title="spt /home/vitor"] $ws8
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
+for_window [class="eww-bar"] floating enable
+
 
 #client colors
 # class                 border  backgr. text    indicator child_border

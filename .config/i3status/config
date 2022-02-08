@@ -1,3 +1,5 @@
+# this symbol work to make comments
+
 general {
         output_format = "i3bar"
         colors = false
@@ -38,7 +40,7 @@ ethernet enp2s0 {
 }
 
 wireless wlp1s0 {
-        format_up = "<span background='#2e3440'>直 %essid </span>"
+        format_up = "<span background='#2e3440'> 直 %essid </span>"
         format_down = "<span background='#2e3440'> 睊 Disconnected </span>"
 }
 
