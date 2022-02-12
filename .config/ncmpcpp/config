@@ -32,19 +32,7 @@ progressbar_elapsed_color = "blue"
 
 # Colors ..
 colors_enabled = "yes"
-active_window_border = "blue"
-color1 = "blue"
-color2 = "red"
-#current_item_prefix = $(blue)
-#current_item_suffix = $/r$(end)
-current_item_inactive_column_prefix = $(red)
-current_item_inactive_column_suffix = $/r$(end)
-state_line_color = black
-header_window_color = black
-alternative_ui_separator_color = black
-window_border_color = black
-song_columns_list_format = "(25)[black]{a} (40)[blue]{f} (30)[red]{b} (7f)[black]{l}"
-main_window_color = "black"
+song_columns_list_format = "(25)[white]{a} (40)[yellow]{f} (30)[cyan]{b} (7f)[white]{l}"
 
 # Misc ..   
 header_text_scrolling = "yes"
@@ -52,10 +40,10 @@ display_bitrate = "yes"
 autocenter_mode = "yes"
 centered_cursor = "yes"
 titles_visibility = "yes"
-statusbar_visibility = "yes"
+statusbar_visibility = "no"
 empty_tag_marker=" -- ‼ -- " 
 mouse_support = "no"
-header_visibility = "yes"
+header_visibility = "no"
 display_remaining_time = "no"
 ask_before_clearing_playlists = "no"
 discard_colors_if_item_is_selected = "yes"

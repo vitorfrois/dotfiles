@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode 12
+font pango:Terminus (TTF) 16
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -52,18 +52,22 @@ bindsym Print exec flameshot gui
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -e fish
+bindsym $mod+Return exec alacritty -e fish
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -modi drun -theme rofi-themes/glassy.rasi -monitor HDMI-1 -opacity 80 
+bindsym $mod+d exec --no-startup-id .config/rofi/launchers/text/launcher.sh
+
+bindsym $mod+Shift+d exec --no-startup-id .config/rofi/applets/menu/apps.sh
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+e exec --no-startup-id ./.config/rofi/powermenu/powermenu.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -117,26 +121,26 @@ bindsym $mod+a focus parent
 
 #Automatically starting apps
 exec_always --no-startup-id picom
-exec --no-startup-id feh --bg-fill wallpaper.jpg
+exec --no-startup-id feh --bg-fill wallpaper.png
 exec --no-startup-id telegram-desktop
 exec --no-startup-id spotifyd --no-daemon -c .config/spotifyd/spotify.conf
 #exec --no-startup-id notion-app 
 exec --no-startup-id thunderbird
 #exec --no-startup-id conky -c .conkyrc
 #exec i3-layouts                       
-
+exec --no-startup-id polybar -q main -c ~/.config/polybar/grayblocks/config.ini
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6:"
-set $ws7 "7:misc"
-set $ws8 "8:舘"
-set $ws9 "9:misc"
-set $ws10 "10:"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -184,6 +188,7 @@ assign [class="code-oss"] $ws3
 assign [class="discord"] $ws4 
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws10
+assign [class=riotclientux.exe|leagueclient.exe] $ws7
 assign [class="Conky"] $ws8
 assign [class="notion-app"] $ws8
 assign [title="spt /home/vitor"] $ws8
@@ -193,10 +198,10 @@ for_window [class="eww-bar"] floating enable
 
 #client colors
 # class                 border  backgr. text    indicator child_border
-client.unfocused        #2e3440 #2e3440 #d8dee9 #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.focused          #d8dee9 #d8dee9 #2e3440 #ff00ff   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.unfocused        #665c54 #665c54 #dfbf8e #665c54   #665c54
+client.focused_inactive #928374 #928374 #dfbf8e #665c54   #665c54
+client.focused          #dfbf8e #dfbf8e #665c54 #dfbf8e	  #dfbf8e
+client.urgent           #ea6962 #900000 #dfbf8e #900000   #ea6962
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
@@ -206,7 +211,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -238,26 +243,10 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if availab
 
-bar {
-		strip_workspace_numbers no 
-        colors {
-        background #2e3440
-        statusline #eceff4
-        separator #eceff4
-
-        # colour of border, background, and text
-        focused_workspace       #2e3440 #d8dee9 #2e3440
-        active_workspace        #2e3440 #2e3440 #d8dee8
-        inactive_workspace      #2e3440 #2e3440 #d8dee8
-        urgent_workspace       #2e3440 #d08770 #2e3440
-    }
-	status_command i3status 
-}
-
 #gaps
-for_window [class="^.*"] border pixel 0
-gaps inner 15
-gaps outer 0
+for_window [class="^.*"] border pixel 2
+gaps inner 0
+gaps outer 1
 
 #popups
 popup_during_fullscreen smart
