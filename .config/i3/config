@@ -185,7 +185,7 @@ workspace $ws10 output eDP-1
 assign [class="Thunderbird"] $ws1
 assign [class="firefox"] $ws2
 assign [class="code-oss"] $ws3
-assign [class="discord"] $ws4 
+assign [class="discord"] $ws5 
 assign [class="TelegramDesktop"] $ws4
 assign [class="Spotify"] $ws10
 assign [class=riotclientux.exe|leagueclient.exe] $ws7

@@ -3,7 +3,7 @@
     frame_color = "#eceff4"
 	background = "#eceff4"
     origin = top-right
-    font = Fira Mono Medium Nerd Font Complete Mono 12
+    font = Terminus (TTF) 12
 	max_icon_size = 10
 	height = 150
 	    
