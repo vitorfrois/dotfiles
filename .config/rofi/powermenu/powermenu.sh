@@ -45,7 +45,7 @@ confirm_exit() {
 	rofi -dmenu\
 		-i\
 		-no-fixed-num-lines\
-		-p "Are You Sure? : "\
+		-p "Are You Sure?"\
 		-theme $dir/confirm.rasi
 }
 
@@ -61,7 +61,7 @@ chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -select
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+		if [[ $ans == "" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			systemctl poweroff
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
@@ -71,7 +71,7 @@ case $chosen in
         ;;
     $reboot)
 		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+		if [[ $ans == "" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			systemctl reboot
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
@@ -86,7 +86,7 @@ case $chosen in
 		;;
     $suspend)
 		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+		if [[ $ans == "" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			mpc -q pause
 			amixer set Master mute
 			systemctl suspend
@@ -98,7 +98,7 @@ case $chosen in
         ;;
     $logout)
 		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+		if [[ $ans == "" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
 				openbox --exit
 			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
