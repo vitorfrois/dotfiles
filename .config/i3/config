@@ -200,6 +200,7 @@ assign [class=riotclientux.exe|leagueclient.exe] $ws7
 assign [class="Conky"] $ws8
 assign [class="notion-app"] $ws8
 assign [title="spt /home/vitor"] $ws8
+assign [class="jetbrains-idea-ce"] $ws3
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class="eww-bar"] floating enable
 
