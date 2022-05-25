@@ -23,6 +23,8 @@ elif [ $WM_DESKTOP != "4194367" ]; then
 	elif [ $WM_CLASS == 'Thunderbird' ]; then
 		echo "%{F}Thunderbird%{u-}"
 	
+	elif [ $WM_CLASS == 'jetbrains-idea-ce' ]; then
+			echo "%{F}Intellij%{u-}"
 	# elif [ $WM_NAME == 'i3' ]; then
 
 	# 	echo "%{F#ffffff}Customname%{u-}"

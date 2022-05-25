@@ -28,7 +28,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id bash -c 'i3lock -i wallpaper.png'
 
 # Monitor xrandr config
 exec --no-startup-id xrandr --output eDP-1 --primary --mode 1366x768 --pos 0x312 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1366x0 --rotate normal
@@ -41,6 +42,9 @@ exec --no-startup-id nm-applet
 
 #exec laptop battery saver tools 
 exec sudo systemctl enable --now laptop-mode.service
+#battery alert
+exec --no-startup-id i3-battery-popup -n -L 15 -D
+
 # Use amixer to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 10+ && $refresh_i3status
@@ -124,6 +128,10 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+#allow horizontal scroll to switch between ws
+bindsym --whole-window --border $mod+button7 workspace next_on_output
+bindsym --whole-window --border $mod+button6 workspace prev_on_output
+
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -203,7 +211,8 @@ assign [title="spt /home/vitor"] $ws8
 assign [class="jetbrains-idea-ce"] $ws3
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class="eww-bar"] floating enable
-
+for_window [class="firefox"] floating disable
+for_window [class="code-oss"] floating disable
 
 #client colors
 # class                 border  backgr. text    indicator child_border

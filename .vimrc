@@ -24,7 +24,9 @@ call plug#begin('~/.vim/plugged')
 
 " airline theme
 let g:airline_theme='base16_gruvbox_dark_hard'
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+" highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+color pablo
+color gruvbox-material 
 
 map j <Left>
 map ç <Right>
