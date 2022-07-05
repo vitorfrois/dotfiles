@@ -128,9 +128,11 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-#allow horizontal scroll to switch between ws
-bindsym --whole-window --border $mod+button7 workspace next_on_output
-bindsym --whole-window --border $mod+button6 workspace prev_on_output
+#allow vim next/prev keybinds
+bindsym --whole-window --border $mod+Tab workspace back_and_forth
+#bindsym --whole-window --border $mod+Control+ccedilla workspace next_on_output
+#bindsym --whole-window --border $mod+j workspace prev_on_output
+
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -200,15 +202,15 @@ workspace $ws10 output eDP-1
 #force windows to certain workspaces
 assign [class="Thunderbird"] $ws1
 assign [class="firefox"] $ws2
-assign [class="code-oss"] $ws3
-assign [class="discord"] $ws5 
-assign [class="TelegramDesktop"] $ws4
+assign [class="code-oss"] $ws4
+assign [class="discord"] $ws6 
+assign [class="TelegramDesktop"] $ws5
 assign [class="Spotify"] $ws10
 assign [class=riotclientux.exe|leagueclient.exe] $ws7
 assign [class="Conky"] $ws8
 assign [class="notion-app"] $ws8
 assign [title="spt /home/vitor"] $ws8
-assign [class="jetbrains-idea-ce"] $ws3
+assign [class="jetbrains-idea-ce"] $ws4
 for_window [class=URxvt|firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class="eww-bar"] floating enable
 for_window [class="firefox"] floating disable

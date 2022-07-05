@@ -51,6 +51,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'valloric/youcompleteme'
+Plugin 'mips.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
